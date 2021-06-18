@@ -6,7 +6,7 @@ $this_idp_env_id = 'TEST';
 
 //This is variable is for simplesaml example only.
 // For real IdP, you must set the url values in the 'idp' config to conform to the IdP's real urls.
-$idp_host = env('SAML2_'.$this_idp_env_id.'_IDP_HOST', 'https://sky-premium-pwa.test/saml');
+$idp_host = env('SAML2_'.$this_idp_env_id.'_IDP_HOST', '');
 
 return $settings = array(
 
@@ -33,8 +33,8 @@ return $settings = array(
 
         // Usually x509cert and privateKey of the SP are provided by files placed at
         // the certs folder. But we can also provide them with the following parameters
-        'x509cert' => env('SAML2_'.$this_idp_env_id.'_SP_x509','MIICWjCCAcOgAwIBAgIBADANBgkqhkiG9w0BAQ0FADBKMQswCQYDVQQGEwJ2bjESMBAGA1UECAwJSMOgIE7hu5lpMQwwCgYDVQQKDANTdW4xGTAXBgNVBAMMEHN1bi1hc3Rlcmlzay5jb20wHhcNMjAwODExMDU1NjAyWhcNMjEwODExMDU1NjAyWjBKMQswCQYDVQQGEwJ2bjESMBAGA1UECAwJSMOgIE7hu5lpMQwwCgYDVQQKDANTdW4xGTAXBgNVBAMMEHN1bi1hc3Rlcmlzay5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAPvD7hP5rZgdERDP+6KdIfxHgPBHHYEVp1UbN3bSKBvlP18+C3q7+BAE/KiHsquZQNaYxA3psMx2b+q9bqIpIJ0RTbbYt8rdBXrkrp9pIHgeOV2CIuEs3qP5fb4d3uHAomMfoqz6fmOJ4E6sEYb7JISsMQ4H0lxBkKyHjfYnF6OxAgMBAAGjUDBOMB0GA1UdDgQWBBS8EwmVPe/VHz7DfcVqsb4vltyWNzAfBgNVHSMEGDAWgBS8EwmVPe/VHz7DfcVqsb4vltyWNzAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBDQUAA4GBAIdwrJLsFB70WYzVk87cmcccWj9YJZ0zkguqmFo0TmGVF3keuVKu1a14lyhS07nZcGoEkP29D+OJCTCfLSfMDfc8kjJMV+AWEuwNpUZtkQRjZF2JT4F+LEPSn+qkRxCdA90TYeeBpOi4lRhQi1AW0PLY3FV9gT0PZ7GFFT6MySde'),
-        'privateKey' => env('SAML2_'.$this_idp_env_id.'_SP_PRIVATEKEY','MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAPvD7hP5rZgdERDP+6KdIfxHgPBHHYEVp1UbN3bSKBvlP18+C3q7+BAE/KiHsquZQNaYxA3psMx2b+q9bqIpIJ0RTbbYt8rdBXrkrp9pIHgeOV2CIuEs3qP5fb4d3uHAomMfoqz6fmOJ4E6sEYb7JISsMQ4H0lxBkKyHjfYnF6OxAgMBAAECgYBjnau29aStOlsFRvXu6rOGyZgH+mt/Jt01vHYeqpq6JuQDQF50aqmFVSPPXxnf8dyIzJtOUfflfrtbqyZ6PUGse0K+ODJ3H+rIt0MwG+QwTd9Haj1q20Gq+C9fIYcQGRGnrx0nctL/oKyPHSjUZ4bCCBQQBBMgX6lfZM6dpXU+fQJBAP+jivIXKLL5GIF+qW1gmwg4xUJpjMVEFMipbhjXNkNpT1XmyG1pDVUrrO1fSV6kSIqrL3jTlMvXmDZfMaCI0SsCQQD8Hvx+k3NgGbSsTY31JtwlwLpGF+BUK3aozgBDC9HpOpwlsk+gemVDsym1sXcOFzKJYRB2Q3n2xuFfvotOApiTAkBcqx86JPUG889TWeP3F1b7wwCW04ZJGCXkm66iaJluFGXDAPbU2okPv9Ze8fS5zxnQ0r9RsHk2739o7lciF5ajAkEAlG7JyNuWuaVosWiXgxV11uQ4xruX3vYXzho6HT8APoe7FpZ8OsbUh58bl1T7+te9cRQsVPQ1Agzk8zGDYlI08QJBAMUCAhJHYEgyMoXoRRbrEsrcdtWv009J8GiYasq5mWTys8oASIR6v5hC3TwrfWIdvFqoU2OBmEOu44JZXrFQjfA='),
+        'x509cert' => env('SAML2_'.$this_idp_env_id.'_SP_x509',''),
+        'privateKey' => env('SAML2_'.$this_idp_env_id.'_SP_PRIVATEKEY',''),
 
         // Identifier (URI) of the SP entity.
         // Leave blank to use the '{idpName}_metadata' route, e.g. 'test_metadata'.
@@ -76,19 +76,7 @@ return $settings = array(
             'url' => env('SAML2_'.$this_idp_env_id.'_IDP_SL_URL', $idp_host . '/saml2/idp/SingleLogoutService.php'),
         ),
         // Public x509 certificate of the IdP
-        'x509cert' => env('SAML2_'.$this_idp_env_id.'_IDP_x509', 'MIICRjCCAa+gAwIBAgIBADANBgkqhkiG9w0BAQ0FADBAMQswCQYDVQQGEwJ2bjER
-        MA8GA1UECAwIQ2F1IGdpYXkxDDAKBgNVBAoMA1N1bjEQMA4GA1UEAwwHc3VuLmNv
-        bTAeFw0yMTA2MTUwOTI0MzRaFw0zMTA2MTMwOTI0MzRaMEAxCzAJBgNVBAYTAnZu
-        MREwDwYDVQQIDAhDYXUgZ2lheTEMMAoGA1UECgwDU3VuMRAwDgYDVQQDDAdzdW4u
-        Y29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDWG52gwSDnX7KhZ2JJsxGq
-        lWoXmalFZoeprabpDi7jaNz3i5NkPY/FTh8Bp4+HNWtWO2bEsvoXP33ZRs2wHunA
-        8qSUZjlWk+jlBPQAJawyfFp/XJyBl7MvY6g2L0CO7n9ecSlboSXXftPMYb4GF8oC
-        LjV1DtiKVZ6p+wSFgBLuhwIDAQABo1AwTjAdBgNVHQ4EFgQUIMOiFXibUGFsFfzZ
-        pc6HSk/1o78wHwYDVR0jBBgwFoAUIMOiFXibUGFsFfzZpc6HSk/1o78wDAYDVR0T
-        BAUwAwEB/zANBgkqhkiG9w0BAQ0FAAOBgQBjCDP3N7NrIPw9b4Qw6jnC3IjZFnpk
-        B4fBMtdZW1IyrWd0vKc987lTFpSRnWnm4utRFO+KxaEYAdCN2R/jQhrNdtGVQANk
-        piJJW4rUP0iCfJnGbvWYWd6sX5UmpP6O3chMP5plJCQ0RWwS38CDiR2xRbKntXJ7
-        iXMCPeaH2s2G8A=='),
+        'x509cert' => env('SAML2_'.$this_idp_env_id.'_IDP_x509', ''),
         /*
          *  Instead of use the whole x509cert you can use a fingerprint
          *  (openssl x509 -noout -fingerprint -in "idp.crt" to generate it)
